@@ -33,6 +33,8 @@ router.get("/hello", async (req, res) => {
       active: true,
     };
 
+    console.log("member", member)
+
     const currentMember = await Members.getByEmail(member.email);
 
     if (currentMember) {

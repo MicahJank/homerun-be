@@ -52,8 +52,7 @@ app.use(
       scope: [
         "profile",
         "email",
-        "openid",
-        "https://www.googleapis.com/auth/calendar"
+        "openid"
       ],
       nonce: true,
       custom_params: { access_type: "offline" },
