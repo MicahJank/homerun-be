@@ -1,15 +1,16 @@
 const router = require("express").Router();
 const Households = require("../models/households-model.js");
+const Members = require("../models/members-model.js");
+const bcrypt = require("bcryptjs");
 
-router.post("/unlock/:id", (req, res, next) => {
-  const { id } = req.params;
+router.post("/unlock", (req, res, next) => {
   if (req.body.pin) {
-    Households.findById(id)
-      .then((household) => {
-        if (household.pin === req.body.pin) {
+    Members.getById(req.body.id)
+      .then((member) => {
+        if (bcrypt.compareSync(req.body.pin, member.password)) {
           res.status(200).json({ success: true });
         } else {
-          res.status(400).json({message: "Invalid PIN" });
+          res.status(400).json({message: "Invalid password" });
         }
       })
       .catch((err) => {
@@ -17,6 +18,7 @@ router.post("/unlock/:id", (req, res, next) => {
       });
   }
 });
+
 
 router.put("/:id", (req, res, next) => {
   const { id } = req.params;
