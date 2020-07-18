@@ -111,10 +111,11 @@ router.post("/login", (req, res, next) => {
         ) {
           const token = generateToken(member);
           res.status(200).json({
-            message: `Welcome, ${member.email}`,
+            message: `Welcome, ${member.username}`,
             token,
             member_id: member.id,
             username: member.username,
+            email: member.email,
             points: member.points,
           });
         } else if (member.active === false) {
