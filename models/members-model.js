@@ -23,7 +23,7 @@ const insert = newMember => {
 const update = (id, updates) => {
   return db("members")
     .where({ id })
-    .update(updates, ["id", "email", "current_household"]);
+    .update(updates, ["id", "username", "email", "current_household"]);
 };
 
 const remove = id => {

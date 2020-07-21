@@ -137,4 +137,17 @@ router.put("/", (req, res, next) => {
   }
 });
 
+
+// update information about user
+router.put("/update-info", (req, res, next) => {
+  const id = req.decodedToken.subject;
+  Members.update(id, req.body)
+    .then(updatedInfo => {
+      res.status(200).json(updatedInfo[0]);
+    })
+    .catch(err => {
+      next(err);
+    });
+})
+
 module.exports = router;
