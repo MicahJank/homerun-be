@@ -1,4 +1,5 @@
 const db = require("../db/dbConfig.js");
+const { first } = require("../db/dbConfig.js");
 
 const insert = confirmation => {
   return db("confirmations")
@@ -7,6 +8,14 @@ const insert = confirmation => {
       return hash[0];
     });
 };
+
+// used when the user wants to update their email
+const updateHash = hash => {
+  return db("confirmations")
+          .where({ hash })
+          .update({ hash }, ["hash"])
+          .first();
+}
 
 const getByHash = hash => {
   return db("confirmations")
@@ -23,5 +32,6 @@ const remove = member_id => {
 module.exports = {
   insert,
   getByHash,
-  remove
+  remove,
+  updateHash
 };

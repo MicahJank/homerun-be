@@ -150,4 +150,20 @@ router.put("/update-info", (req, res, next) => {
     });
 })
 
+// the endpoint the user hits when trying to update their email
+router.put("/update-email", (req, res, next) => {
+  const { email } = req.body;
+  const hash = crypto.randomBytes(20).toString("hex");
+
+  Confirmations.updateHash(hash)
+    .then(hash => {
+      sendMail(email, templates.confirmation(hash));
+        res.status(200).json({
+          message: `A confirmation email has been sent to ${member.email}`,
+        });
+
+    })
+
+})
+
 module.exports = router;
