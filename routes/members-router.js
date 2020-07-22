@@ -157,7 +157,7 @@ router.put("/update-email", (req, res, next) => {
 
   Confirmations.updateHash(hash)
     .then(hash => {
-      sendMail(email, templates.confirmation(hash));
+      sendMail(email, templates.newEmail(hash));
         res.status(200).json({
           message: `A confirmation email has been sent to ${member.email}`,
         });
