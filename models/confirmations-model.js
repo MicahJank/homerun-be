@@ -10,9 +10,9 @@ const insert = confirmation => {
 };
 
 // used when the user wants to update their email
-const updateHash = hash => {
+const updateHash = (hash, id) => {
   return db("confirmations")
-          .where({ hash })
+          .where({ member_id: id })
           .update({ hash }, ["hash"])
           .first();
 }

@@ -152,18 +152,38 @@ router.put("/update-info", (req, res, next) => {
 
 // the endpoint the user hits when trying to update their email
 router.put("/update-email", (req, res, next) => {
-  const { email } = req.body;
+  const { email, memberId } = req.body;
   const hash = crypto.randomBytes(20).toString("hex");
-
-  Confirmations.updateHash(hash)
+  console.log(email, memberId)
+  Confirmations.insert({ member_id: memberId, hash, email })
     .then(hash => {
-      sendMail(email, templates.newEmail(hash));
-        res.status(200).json({
-          message: `A confirmation email has been sent to ${member.email}`,
-        });
-
+      sendMail(email, templates.newEmail(hash))
+      res.status(200).json({ message: `An email has been sent to ${email} for confirmation.`})
     })
+    .catch(err => {
+      next(err);
+    })
+})
 
+router.put("/confirm-new-email", (req, res, next) => {
+  const { hash } = req.body;
+  // check to see if the hash in in the confirmations table - if it is then we can officially update the users email
+  Confirmations.getByHash(hash)
+    .then(confirmation => {
+      Members.update(confirmation.member_id,{ email: confirmation.email })
+        .then(memberInfo => {
+          console.log(memberInfo)
+          const { email } = memberInfo[0]
+          res.status(200).json({
+            message: `New email has been confirmed!`,
+            email: email,
+          });
+
+        })
+    })
+    .catch(err => {
+      next(err);
+    })
 })
 
 module.exports = router;
