@@ -204,6 +204,39 @@ router.post("/reset", (req, res, next) => {
 });
 
 
+// verify the old password and update with the new password that is inputted
+router.put("/update-password", (req, res, next) => {
+  const { oldPassword, newPassword, memberId } = req.body
+  
+  if (oldPassword && newPassword) {
+    Members.getById(memberId)
+      .then(member => {
+        if (bcrypt.compareSync(oldPassword, member.password)) {
+          Members.update(memberId, { password: newPassword })
+            .then(() => {
+              res.status.json({ message: "Password was updated succesfully." })
+            })
+            .catch(err => {
+              res.status(400).json({ message: "Unable to update passowrd." })
+              next(err)
+            })
+        } else {
+          res.status(400).json({ message: "Unable to verify the current password." })
+        }
+      })
+      .catch(err => {
+        next(err)
+      })
+
+  } else {
+    if (!oldPassword) {
+      res.status(400).json({ message: "Current password cannot be blank"})
+    } else if (!newPassword) {
+      res.status(400).json({ message: "New password cannot be blank"})
+    }
+  }
+})
+
 router.delete("/:member_id", async (req, res) => {
   try {
     const request = await Members.remove(req.params.member_id);
