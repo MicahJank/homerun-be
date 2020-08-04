@@ -104,6 +104,7 @@ router.post("/login", (req, res, next) => {
     Members.getByEmail(credentials.email)
       .then((member) => {
         console.log(member);
+        console.log(credentials);
         if (
           member.active &&
           bcrypt.compareSync(credentials.password, member.password)
@@ -207,20 +208,23 @@ router.post("/reset", (req, res, next) => {
 // verify the old password and update with the new password that is inputted
 router.put("/update-password", (req, res, next) => {
   const { oldPassword, newPassword, memberId } = req.body
-  
   if (oldPassword && newPassword) {
     Members.getById(memberId)
       .then(member => {
+        console.log("compare: ", oldPassword, member.password);
         if (bcrypt.compareSync(oldPassword, member.password)) {
-          Members.update(memberId, { password: newPassword })
+          console.log("inside comparesync")
+          let hashedNewPassword = bcrypt.hashSync(newPassword, 14);
+          Members.update(memberId, { password: hashedNewPassword })
             .then(() => {
-              res.status.json({ message: "Password was updated succesfully." })
+              res.status(200).json({ message: "Password was updated successfully." })
             })
             .catch(err => {
-              res.status(400).json({ message: "Unable to update passowrd." })
+              res.status(400).json({ message: "Unable to update password." })
               next(err)
             })
         } else {
+          console.log("problem with comparing passwords")
           res.status(400).json({ message: "Unable to verify the current password." })
         }
       })

@@ -153,6 +153,9 @@ router.put("/update-info", (req, res, next) => {
 // the endpoint the user hits when trying to update their email
 router.put("/update-email", (req, res, next) => {
   const { email, memberId } = req.body;
+  if (!email) {
+    res.status(404).json({ message: "Please dont leave email field blank." })
+  }
   const hash = crypto.randomBytes(20).toString("hex");
   console.log(email, memberId)
   Confirmations.insert({ member_id: memberId, hash, email })
