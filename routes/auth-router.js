@@ -123,14 +123,14 @@ router.post("/login", (req, res, next) => {
             message: "Please confirm your email address before logging in.",
           });
         } else {
-          res.status(401).json({ message: "Invalid credentials" });
+          res.status(401).json({ message: "Invalid credentials, please make sure your password and email are correct." });
         }
       })
       .catch((err) => {
         next(err);
       });
   } else {
-    res.status(400).json({ message: "Invalid credentials" });
+    res.status(400).json({ message: "Invalid credentials, please make sure your password and email are correct." });
   }
 });
 
