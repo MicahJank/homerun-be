@@ -38,7 +38,8 @@ router.get("/household/assignable", async (req, res) => {
   try {
     const members = await Members.totalHouseholdMembers(householdId);
     const children = await Members.totalHouseholdChildren(householdId);
-    res.status(200).json([...members, ...children]);
+    // res.status(200).json([...members, ...children]);
+    res.status(200).json({ members, children });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
