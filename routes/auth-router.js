@@ -82,7 +82,6 @@ router.post("/signup", async (req, res, next) => {
           hash: crypto.randomBytes(20).toString("hex"),
         };
         Confirmations.insert(newConfirmation).then((hash) => {
-          // TODO: change this to member.email once testing is complete
           sendMail(member.email, templates.confirmation(hash));
           res.status(200).json({
             message: `A confirmation email has been sent to ${member.email}`,
@@ -107,16 +106,18 @@ router.post("/login", (req, res, next) => {
     Members.getByEmail(credentials.email)
       .then((member) => {
         console.log(member);
+        console.log(credentials);
         if (
           member.active &&
           bcrypt.compareSync(credentials.password, member.password)
         ) {
           const token = generateToken(member);
           res.status(200).json({
-            message: `Welcome, ${member.email}`,
+            message: `Welcome, ${member.username}`,
             token,
             member_id: member.id,
             username: member.username,
+            email: member.email,
             points: member.points,
           });
         } else if (member.active === false) {
@@ -124,14 +125,14 @@ router.post("/login", (req, res, next) => {
             message: "Please confirm your email address before logging in.",
           });
         } else {
-          res.status(401).json({ message: "Invalid credentials" });
+          res.status(401).json({ message: "Invalid credentials, please make sure your password and email are correct." });
         }
       })
       .catch((err) => {
         next(err);
       });
   } else {
-    res.status(400).json({ message: "Invalid credentials" });
+    res.status(400).json({ message: "Invalid credentials, please make sure your password and email are correct." });
   }
 });
 
@@ -205,6 +206,42 @@ router.post("/reset", (req, res, next) => {
     });
 });
 
+
+// verify the old password and update with the new password that is inputted
+router.put("/update-password", (req, res, next) => {
+  const { oldPassword, newPassword, memberId } = req.body
+  if (oldPassword && newPassword) {
+    Members.getById(memberId)
+      .then(member => {
+        console.log("compare: ", oldPassword, member.password);
+        if (bcrypt.compareSync(oldPassword, member.password)) {
+          console.log("inside comparesync")
+          let hashedNewPassword = bcrypt.hashSync(newPassword, 14);
+          Members.update(memberId, { password: hashedNewPassword })
+            .then(() => {
+              res.status(200).json({ message: "Password was updated successfully." })
+            })
+            .catch(err => {
+              res.status(400).json({ message: "Unable to update password." })
+              next(err)
+            })
+        } else {
+          console.log("problem with comparing passwords")
+          res.status(400).json({ message: "Unable to verify the current password." })
+        }
+      })
+      .catch(err => {
+        next(err)
+      })
+
+  } else {
+    if (!oldPassword) {
+      res.status(400).json({ message: "Current password cannot be blank"})
+    } else if (!newPassword) {
+      res.status(400).json({ message: "New password cannot be blank"})
+    }
+  }
+})
 
 router.delete("/:member_id", async (req, res) => {
   try {

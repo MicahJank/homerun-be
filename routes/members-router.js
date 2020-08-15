@@ -38,7 +38,8 @@ router.get("/household/assignable", async (req, res) => {
   try {
     const members = await Members.totalHouseholdMembers(householdId);
     const children = await Members.totalHouseholdChildren(householdId);
-    res.status(200).json([...members, ...children]);
+    // res.status(200).json([...members, ...children]);
+    res.status(200).json({ members, children });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -136,5 +137,57 @@ router.put("/", (req, res, next) => {
       });
   }
 });
+
+
+// update information about user
+router.put("/update-info", (req, res, next) => {
+  const id = req.decodedToken.subject;
+  Members.update(id, req.body)
+    .then(updatedInfo => {
+      res.status(200).json(updatedInfo[0]);
+    })
+    .catch(err => {
+      next(err);
+    });
+})
+
+// the endpoint the user hits when trying to update their email
+router.put("/update-email", (req, res, next) => {
+  const { email, memberId } = req.body;
+  if (!email) {
+    res.status(404).json({ message: "Please dont leave email field blank." })
+  }
+  const hash = crypto.randomBytes(20).toString("hex");
+  console.log(email, memberId)
+  Confirmations.insert({ member_id: memberId, hash, email })
+    .then(hash => {
+      sendMail(email, templates.newEmail(hash))
+      res.status(200).json({ message: `An email has been sent to ${email} for confirmation.`})
+    })
+    .catch(err => {
+      next(err);
+    })
+})
+
+router.put("/confirm-new-email", (req, res, next) => {
+  const { hash } = req.body;
+  // check to see if the hash in in the confirmations table - if it is then we can officially update the users email
+  Confirmations.getByHash(hash)
+    .then(confirmation => {
+      Members.update(confirmation.member_id,{ email: confirmation.email })
+        .then(memberInfo => {
+          console.log(memberInfo)
+          const { email } = memberInfo[0]
+          res.status(200).json({
+            message: `New email has been confirmed!`,
+            email: email,
+          });
+
+        })
+    })
+    .catch(err => {
+      next(err);
+    })
+})
 
 module.exports = router;

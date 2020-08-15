@@ -21,5 +21,12 @@ module.exports = {
       text: `Please paste the following link in to your browser's URL bar in order to join this household: ${process.env.FE_URL}/invite/${hash}/${householdId}`,
       html: `Please follow <a href="${process.env.FE_URL}/invite/${hash}/${householdId}">this link</a> to join this household.`
     };
+  },
+  newEmail: hash => {
+    return {
+      subject: `Confirm Updated Email - Tidy Hive`,
+      text: `Please paste the following link in to your browser's URL bar in order to complete your registration: ${process.env.FE_URL}/update-email/${hash}`,
+      html: `Please follow <a href="${process.env.FE_URL}/update-email/${hash}">this link</a> to complete your registration.`
+    }
   }
 };

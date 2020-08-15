@@ -19,6 +19,7 @@ router.post("/unlock", (req, res, next) => {
   }
 });
 
+
 router.put("/:id", (req, res, next) => {
   const { id } = req.params;
   Households.update(id, req.body)
