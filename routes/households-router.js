@@ -16,6 +16,8 @@ router.post("/unlock", (req, res, next) => {
       .catch((err) => {
         next(err);
       });
+  } else {
+    res.status(400).json({message: "Password field cannot be blank"})
   }
 });
 
