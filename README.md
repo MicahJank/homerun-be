@@ -30,34 +30,34 @@ To get the server running locally:
 
 In order for the app to function correctly, the user must set up their own environment variables.
 
-create a .env file that includes the following:
+create a .env file that includes the following env variables
 
-- DEV_LOCAL=postgresql://postgres:Test1234@localhost/postgres (Download postgres and add url with your password here)
-- JWT_SECRET=thisissupercereal
-- SG_USER=apikey
-- SG_PASS=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
-- BASE_URL=http://localhost:3000
-- FE_URL=http://localhost:3001
-- OAUTH_URL=localhost:3000
+- DEV_LOCAL=thepostgresql link to your database goes here (Download postgres and add url with your password here)
+- JWT_SECRET=can be anything you desire
+- SG_USER=your send grid api key
+- SG_PASS=your send grid password
+- BASE_URL=the url where the server will be running
+- FE_URL=the url where the front end client will be running
+- OAUTH_URL=should be same as the base url
 - OAUTH_PROTOCOL=http
-- ALGO=aes-256-cbc
-- CRYPTO_KEY=True nobility is being superior to your former self.
-- SESSION_KEY=this is a session key
-- G_CLIENT_ID=1050964061778-o501f0usfcgqtapvsmhvs89eebtndv9m.apps.googleusercontent.com
-- G_CLIENT_SECRET=G1tKjOJDY5srwnyMPf8bJbvk
-- F_CLIENT_ID=200338417844322
-- F_CLIENT_SECRET=7a99ae1f44e01f370261b55b9e37d45f
+- ALGO=the algorithim you specify
+- CRYPTO_KEY=can be anything
+- SESSION_KEY=can be anything
+- G_CLIENT_ID=your google client id
+- G_CLIENT_SECRET=your google client secret
+- F_CLIENT_ID=your facebook client id
+- F_CLIENT_SECRET=your facebook client secret
 
 
-#### Backend deployed at TidyHive (https://dashboard.heroku.com/apps/stage-homerun-be)
+#### Backend deployed at TidyHive (https://tidyhive-be-stage.herokuapp.com/)
 
-#### See [Frontend Documentation](https://github.com/Lambda-School-Labs/homerun-fe) for details on the fronend of our project.
+#### See [Frontend Documentation](https://github.com/MicahJank/homerun-fe/blob/master/README.md) for details on the fronend of our project.
 
 
-## Backend framework goes here
-
+## Backend framework
 - Express 
 - Node.JS
+- Knex
 
 ### Reasoning:
 
@@ -611,10 +611,6 @@ Authorization: Token
   },
 ```
 
-
-## HAVE FUN! 
-
-<!-- 
 ### Issue/Bug Request
 
 **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
@@ -644,7 +640,7 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 ### Attribution
 
-These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426). -->
+These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
 
 
