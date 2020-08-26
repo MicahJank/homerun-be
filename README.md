@@ -1,10 +1,19 @@
 # Contributors
 
-|    [Heather Ridgill ](https://github.com/Heather-Ridgill)      |     [Micah Jank](https://github.com/MicahJank)       |     [Katrina Roaix](https://github.com/kroaix)     |     [Yankho Trumble](https://github.com/Mayankho)     | | [Zach Taylor ](https://github.com/zbtaylor) | [Vinni Hoke](https://github.com/vinnihoke) | [Brandon Dresselle - TL](https://github.com/BDesselle) |
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/maintainability)
+|    [Heather Ridgill ](https://github.com/Heather-Ridgill)      |     [Micah Jank](https://github.com/MicahJank)       |     [Katrina Roaix](https://github.com/kroaix)     |     [Yankho Trumble](https://github.com/Mayankho)     |
+|:---:|:---:|:---:|:---:|
+|    [<img src="https://avatars3.githubusercontent.com/u/49896861?s=460&v=4" width = "115" />](https://github.com/Heather-Ridgill)     |     [<img src="https://avatars3.githubusercontent.com/u/40408940?s=460&v=4" width = "115" />](https://github.com/MicahJank)       |     [<img src="https://avatars3.githubusercontent.com/u/5169760?s=460&v=4" width = "115" />](https://github.com/kroaix)     |     [<img src="https://avatars2.githubusercontent.com/u/33339750?s=460&v=4" width = "115" />](https://github.com/Mayankho)     |
+|    [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Heather-Ridgill)     |     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/MicahJank)      |     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/kroaix)     |     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mayankho)     |
+|    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heatherridgill/)     |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/micah-jank/)      |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kroaix/)     |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/yankho/)     |
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/test_coverage)
+| [Zach Taylor ](https://github.com/zbtaylor) | [Vinni Hoke](https://github.com/vinnihoke) | [Brandon Dresselle - TL](https://github.com/BDesselle) |
+|    :---:     |     :---:      |     :---:     |
+| [<img src="https://avatars0.githubusercontent.com/u/37271885?s=460&v=4" width = "115" />](https://github.com/zbtaylor)   | [<img src="https://avatars1.githubusercontent.com/u/34225237?s=460&v=4" width = "115" />](https://github.com/vinnihoke)     | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UCBK6FRD5-c149fef438f7-512" width = "115" />](https://github.com/BDesselle)    |
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/zbtaylor)     | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/vinnihoke)       | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/BDesselle)      |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/zach-taylor-97b90a196/)     | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/vinnihoke/)       | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-desselle-33b689161/)      |
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/test_coverage)
 
 # Getting started
 
