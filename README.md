@@ -1,4 +1,6 @@
-# Contributors
+# Tidy Hive Back End Documentation
+
+## Contributors
 
 
 |    [Heather Ridgill ](https://github.com/Heather-Ridgill)      |     [Micah Jank](https://github.com/MicahJank)       |     [Katrina Roaix](https://github.com/kroaix)     |     [Yankho Trumble](https://github.com/Mayankho)     |
@@ -15,7 +17,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a280d9a48c1e094a79cb/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/homerun-be/test_coverage)
 
-# Getting started
+## Getting started
 
 To get the server running locally:
 
@@ -24,32 +26,32 @@ To get the server running locally:
 - **npm server** to start the local server
 - **npm test** to start server using testing environment
 
-# Documentation
+## Documentation
 
 #### Backend deployed at TidyHive (https://dashboard.heroku.com/apps/stage-homerun-be)
 
 #### See [Frontend Documentation](https://github.com/Lambda-School-Labs/homerun-fe) for details on the fronend of our project.
 
 
-# Backend framework goes here
+## Backend framework goes here
 
 - Express 
 - Node.JS
 
-## Reasoning:
+### Reasoning:
 
 - Flexibility
 - Easy to use (speed, familiarity, etc)
 - Great Ecosystems, libraries and modules
 - Same language on frontend and backend
 
-## Endpoints
+### Endpoints
 
 [Endpoints can be found here.](https://documenter.getpostman.com/view/9155829/SzKbMFcG?version=latest)
 
-# Auth Routes
+## Auth Routes
 
-## *Signup*
+### *Signup*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -66,7 +68,7 @@ Body Raw
   "password": "password"
 }
 ```
-### Returned Example
+#### Returned Example
 
 {
   "message": "A confirmation email has been sent to test@test.com"
@@ -74,7 +76,7 @@ Body Raw
 
 
 
-## *Confirm Email*
+### *Confirm Email*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -90,14 +92,14 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 
 {
   "message": "User confirmed successfully."
 }
 
 
-## *Log in
+### *Log in
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -114,14 +116,14 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 
 { <br>
   "message": "Welcome, mom@test.com", <br>
   "token": "" <br>
 }
 
-## *Forgot Password*
+### *Forgot Password*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -137,14 +139,14 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 
 {
   "message": "A password reset link has been sent to zbtaylor1@gmail.com"
 }
 
 
-## *Password Reset*
+### *Password Reset*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -161,15 +163,15 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 
 {
   "message": "Your password has been reset."
 }
 
-# OAuth Google
+## OAuth Google
 
-## *Confirm Email*
+### *Confirm Email*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -178,9 +180,9 @@ Body Raw
 
 <br>
 
-# TODO Endpoints
+## TODO Endpoints
 
-## *Add a todo*
+### *Add a todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -196,7 +198,7 @@ Body Raw
 	"household": "a12345"
 }
 ```
-### Returned Example
+#### Returned Example
 ```javascript 
 {
   "id": 6,
@@ -211,7 +213,7 @@ Body Raw
 }
 ```
 
-## *Update a todo*
+### *Update a todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -227,7 +229,7 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 ```javascript 
 {
   "id": 1,
@@ -241,7 +243,7 @@ Body Raw
   "completed_by": ""
 }
 ```
-## *Assign a todo*
+### *Assign a todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -270,7 +272,7 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 ```javascript 
 [
   {
@@ -291,7 +293,7 @@ Body Raw
 ]
 ```
 
-## *Unassign a todo*
+### *Unassign a todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -316,7 +318,7 @@ Body Raw
 }
 
 ```
-### Returned Example
+#### Returned Example
 ```javascript 
 [
   {
@@ -332,7 +334,7 @@ Body Raw
 ]
 ```
 
-## *Delete a todo*
+### *Delete a todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -343,13 +345,13 @@ Takes an object including:
 Authorization: Token
 
 
-### Returned Example
+#### Returned Example
 ```javascript 
 {
 	message: "$1 todo(s) removed"
 }
 ```
-## *Todo by household*
+### *Todo by household*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -360,7 +362,7 @@ Takes an object including:
 Authorization: Token
 
 
-### Returned Example
+#### Returned Example
 ```javascript 
 {
     "id": 2,
@@ -403,7 +405,7 @@ Authorization: Token
     "assigned": []
   },
 ```
-## *All Users Assigned to Todo*
+### *All Users Assigned to Todo*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -433,7 +435,7 @@ Body Raw
 
 ```
 
-### Returned Example
+#### Returned Example
 ```javascript 
 {
     "assignees": [
@@ -453,9 +455,9 @@ Body Raw
 }
 ```
 
-# Members & Children Endpoints
+## Members & Children Endpoints
 
-## *Add Child*
+### *Add Child*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -472,7 +474,7 @@ Body Raw
 
 ```
 
-### Returned Example
+#### Returned Example
 ```javascript 
 [
   {
@@ -485,7 +487,7 @@ Body Raw
 ]
 ```
 
-## *Update Child
+### *Update Child
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -503,7 +505,7 @@ Body Raw
 
 ```
 
-### Returned Example
+#### Returned Example
 ```javascript 
 [
   {
@@ -512,7 +514,7 @@ Body Raw
 ]
 ```
 
-## *Delete Child*
+### *Delete Child*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -523,14 +525,14 @@ Takes an object including:
 Authorization: Token
 
 
-### Returned Example
+#### Returned Example
 ```javascript 
 {
 	1
 }
 ```
 
-## *Update Member / Accept Household Invite*
+### *Update Member / Accept Household Invite*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -547,14 +549,14 @@ Body Raw
 
 ```
 
-### Returned Example
+#### Returned Example
 ```javascript 
 {
 	"username": "Changed Member Name"
 }
 ```
 
-## *All Members in Household*
+### *All Members in Household*
 
 | Method | Endpoint                | Access Control |                                 
 | ------ | ----------------------- | -------------- | 
@@ -564,7 +566,7 @@ Body Raw
 Takes an object including:
 Authorization: Token
 
-### Returned Example
+#### Returned Example
 ```javascript 
   {
     "id": 1,
@@ -612,7 +614,7 @@ create a .env file that includes the following:
 - F_CLIENT_SECRET=7a99ae1f44e01f370261b55b9e37d45f -->
 
 
-# HAVE FUN! 
+## HAVE FUN! 
 
 <!-- 
 ### Issue/Bug Request
